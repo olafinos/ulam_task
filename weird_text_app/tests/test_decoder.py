@@ -1,7 +1,5 @@
 from unittest import TestCase
-from unittest.mock import patch
-from weird_text.decoder import WeirdTextDecoder
-from random import Random
+from ..weird_text.decoder import WeirdTextDecoder
 
 
 class TestWeirdTextDecoder(TestCase):
@@ -11,7 +9,6 @@ class TestWeirdTextDecoder(TestCase):
             "\n-weird-\nTihs is a lnog loonog tset scnenete,\nwtih smoe big (biiiiig) wrdos!\n-weird-\n"
             "long looong sentence some test This with words"
         )
-        cls.random = Random(42)
         cls.decoder = WeirdTextDecoder(cls.encoded_text)
 
     def test_shuffled_words_attribute(self):

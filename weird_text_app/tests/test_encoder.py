@@ -1,6 +1,6 @@
 from unittest import TestCase
 from unittest.mock import patch
-from weird_text.encoder import WeirdTextEncoder
+from ..weird_text.encoder import WeirdTextEncoder
 from random import Random
 
 
@@ -30,14 +30,14 @@ class TestWeirdTextEncoder(TestCase):
         ]
         self.assertEqual(self.encoder.words, expected)
 
-    @patch("weird_text.encoder.random")
+    @patch("weird_text_app.weird_text.encoder.random")
     def test_encode_word(self, random_choice_mock):
         random_choice_mock.choice._mock_side_effect = self.random.choice
         encoded_word = self.encoder._encode_word("word")
         expected_word = "wrod"
         self.assertEqual(encoded_word, expected_word)
 
-    @patch("weird_text.encoder.random")
+    @patch("weird_text_app.weird_text.encoder.random")
     def test_encode_text(self, random_choice_mock):
         random_choice_mock.choice._mock_side_effect = self.random.choice
         encoded_text = self.encoder._encode_text()
@@ -46,7 +46,7 @@ class TestWeirdTextEncoder(TestCase):
         )
         self.assertEqual(encoded_text, expected_text)
 
-    @patch("weird_text.encoder.random")
+    @patch("weird_text_app.weird_text.encoder.random")
     def test_encode(self, random_choice_mock):
         random_choice_mock.choice._mock_side_effect = self.random.choice
         encoded_text = self.encoder.encode()
