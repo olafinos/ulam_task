@@ -15,7 +15,6 @@ class WeirdTextEncoder:
 
     def __init__(self, input_text, separator="\n-weird-\n"):
         self.separator = separator
-        self.regex_token = re.compile(r"(\w+)", re.U)
         self.text = input_text
         self.words = self._get_all_words_from_text()
         self.shuffled_words = []
@@ -25,7 +24,8 @@ class WeirdTextEncoder:
         Separate all words from input text.
         :return: List with input text words
         """
-        return self.regex_token.findall(self.text)
+        regex_token = re.compile(r"(\w+)", re.U)
+        return regex_token.findall(self.text)
 
     def encode(self) -> str:
         """
