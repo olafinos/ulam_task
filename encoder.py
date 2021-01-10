@@ -59,12 +59,11 @@ class WeirdTextEncoder:
         else:
             first_letter, last_letter, middle_part = word[0], word[-1], word[1:-1]
             permutation_list = list(permutations(middle_part))
-            permutated_middle_part = random.choice(permutation_list)
-            permutation_list.remove(permutated_middle_part)
             while permutation_list:
+                permutated_middle_part = random.choice(permutation_list)
+                permutation_list.remove(permutated_middle_part)
                 if permutated_middle_part == tuple(middle_part):
-                    permutated_middle_part = random.choice(permutation_list)
-                    permutation_list.remove(permutated_middle_part)
+                    continue
                 else:
                     break
 
