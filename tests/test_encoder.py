@@ -8,7 +8,7 @@ class TestWeirdTextEncoder(TestCase):
     @classmethod
     def setUpClass(cls):
         cls.input_text = (
-            "‘This is a long looong test sentence,\n’‘with some big (biiiiig) words!’"
+            "This is a long looong test sentence,\nwith some big (biiiiig) words!"
         )
         cls.random = Random(42)
         cls.encoder = WeirdTextEncoder(cls.input_text)
@@ -42,7 +42,7 @@ class TestWeirdTextEncoder(TestCase):
         random_choice_mock.choice._mock_side_effect = self.random.choice
         encoded_text = self.encoder._encode_text()
         expected_text = (
-            "‘Tihs is a lnog loonog tset scenente,\n’‘wtih smoe big (biiiiig) wdros!’"
+            "Tihs is a lnog loonog tset scenente,\nwtih smoe big (biiiiig) wdros!"
         )
         self.assertEqual(encoded_text, expected_text)
 
@@ -51,15 +51,15 @@ class TestWeirdTextEncoder(TestCase):
         random_choice_mock.choice._mock_side_effect = self.random.choice
         encoded_text = self.encoder.encode()
         expected_text = (
-            "\n-weird-\n‘Tihs is a lnog loonog tset sectenne,\n’‘wtih smoe big (biiiiig) wrods!"
-            "’\n-weird-\nlong looong sentence some test This with words"
+            "\n-weird-\nTihs is a lnog loonog tset sectenne,\nwtih smoe big (biiiiig) wrods!"
+            "\n-weird-\nlong looong sentence some test This with words"
         )
         self.assertEqual(encoded_text, expected_text)
 
     def test_create_final_output(self):
         output = self.encoder._create_final_output(self.input_text)
         expected_output = (
-            "\n-weird-\n‘This is a long looong test sentence,\n"
-            "’‘with some big (biiiiig) words!’\n-weird-\n"
+            "\n-weird-\nThis is a long looong test sentence,\n"
+            "with some big (biiiiig) words!\n-weird-\n"
         )
         self.assertEqual(output, expected_output)

@@ -46,16 +46,16 @@ class WeirdTextDecoder:
             self.original_words,
         )
         for possible_word in possible_words:
-            if self._check_if_middle_part_equal(possible_word, word):
+            if self._check_if_middle_part_chars_equal(possible_word, word):
                 return possible_word
         return word
 
-    def _check_if_middle_part_equal(
-        self, original_word: str, permutated_word: str
+    def _check_if_middle_part_chars_equal(
+        self, original_word: str, permuted_word: str
     ) -> bool:
         """
-        Checks if middle part of two given words are equal.
+        Checks if middle chars of two given words are equal.
         :param original_word: Word from list of original words.
-        :param permutated_word: Word from encoded input text.
+        :param permuted_word: Word from encoded input text.
         """
-        return sorted(original_word[1:-1]) == sorted(permutated_word[1:-1])
+        return sorted(original_word[1:-1]) == sorted(permuted_word[1:-1])
