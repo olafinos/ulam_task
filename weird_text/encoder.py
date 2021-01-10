@@ -33,7 +33,7 @@ class WeirdTextEncoder:
         :return: Encoded input text.
         """
         encoded_text = self._encode_text()
-        return self.create_final_output(encoded_text)
+        return self._create_final_output(encoded_text)
 
     def _encode_text(self) -> str:
         """
@@ -69,7 +69,7 @@ class WeirdTextEncoder:
 
             return f"{first_letter}{''.join(permutated_middle_part)}{last_letter}"
 
-    def create_final_output(self, encoded_text: str) -> str:
+    def _create_final_output(self, encoded_text: str) -> str:
         """
         Adds separator and sorted shuffled words to encoded text
         :param encoded_text: Encoded text.
