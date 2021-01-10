@@ -34,7 +34,8 @@ class WeirdTextDecoder:
 
     def _decode_word(self, word: str) -> str:
         """
-        Decodes given word.
+        Decodes given word if possible. Finds all original words which starts and ends
+        with this same letters as decoded word. Then checks if middle chars are equal.
         :param word: Word from encoded input text.
         :return: Decoded word if possible.
         """
