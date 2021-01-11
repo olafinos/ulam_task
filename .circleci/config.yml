@@ -1,11 +1,11 @@
 version: 2.1
 
 orbs:
-  python: circleci/python@0.2.1
+  python: circleci/heroku@1.2.4
 
 jobs:
   build-and-test:
-    executor: python/default
+    executor: circleci/python@3.8.5
     steps:
       - checkout
       - python/load-cache
@@ -14,8 +14,14 @@ jobs:
       - run:
           command: python ./manage.py test weird_text_app.tests
           name: Test
-
+  deploy:
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/install
+      - heroku/deploy-via-git
 workflows:
   main:
     jobs:
       - build-and-test
+      - deploy
