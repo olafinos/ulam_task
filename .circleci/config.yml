@@ -30,6 +30,8 @@ jobs:
           destination: python_app
   deploy:
     executor: heroku/default
+    environment:
+      HEROKU_APP: "weird-text-app"
     steps:
       - checkout
       - heroku/install
