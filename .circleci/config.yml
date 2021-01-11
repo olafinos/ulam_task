@@ -31,7 +31,7 @@ jobs:
   deploy:
     executor: heroku/default
     environment:
-      HEROKU_APP: "weird-text-app"
+      HEROKU_APP_NAME: "weird-text-app"
     steps:
       - checkout
       - heroku/install
