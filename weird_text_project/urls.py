@@ -15,8 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.documentation import include_docs_urls, get_schema_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("v1/", include('weird_text_app.urls'))
+    path("v1/", include('weird_text_app.urls')),
+    path("v1/docs", include_docs_urls('WeirdTextAPI'))
+
 ]
