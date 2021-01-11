@@ -1,11 +1,12 @@
 version: 2.1
 
 orbs:
-  python: circleci/heroku@1.2.4
+  heroku: circleci/heroku@1.2.4
+  python: circleci/python@0.2.1
 
 jobs:
   build-and-test:
-    executor: circleci/python@3.8.5
+    executor: python/default
     steps:
       - checkout
       - python/load-cache
