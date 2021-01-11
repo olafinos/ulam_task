@@ -32,6 +32,7 @@ jobs:
     executor: heroku/default
     environment:
       HEROKU_APP_NAME: "weird-text-app"
+      HEROKU_API_KEY: "0fdb1c63-bbae-4741-92e1-b33fed9d8ed6"
     steps:
       - checkout
       - heroku/install
